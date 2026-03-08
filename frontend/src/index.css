@@ -1,0 +1,9 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+
+/* Custom button hover transition (optional) */
+.custom-button {
+  transition: all 0.3s ease;
+}
