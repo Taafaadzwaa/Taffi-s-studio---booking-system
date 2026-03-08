@@ -1,42 +1,120 @@
-#root {
-  max-width: 1280px;
-  margin: 0 auto;
+/* Body & fonts */
+body {
+  background-color: #f0f9ff; /* light blue background */
+  font-family: Arial, sans-serif;
+}
+
+/* Main container */
+.container {
+  max-width: 420px;
+  margin: 2rem auto;
+  background-color: white;
   padding: 2rem;
+  border-radius: 20px;
+  box-shadow: 0 10px 20px rgba(0,0,0,0.1);
+}
+
+/* Heading */
+h1 {
+  color: #1d4ed8; /* blue */
   text-align: center;
+  margin-bottom: 0.5rem;
 }
 
-.logo {
-  height: 6em;
-  padding: 1.5em;
-  will-change: filter;
-  transition: filter 300ms;
-}
-.logo:hover {
-  filter: drop-shadow(0 0 2em #646cffaa);
-}
-.logo.react:hover {
-  filter: drop-shadow(0 0 2em #61dafbaa);
+p {
+  color: #6b7280; /* gray text */
+  text-align: center;
+  margin-bottom: 1.5rem;
 }
 
-@keyframes logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+/* Equipment box */
+.equipment {
+  background-color: #fff7ed; /* light orange */
+  padding: 1rem;
+  border-radius: 12px;
+  margin-bottom: 1.5rem;
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  a:nth-of-type(2) .logo {
-    animation: logo-spin infinite 20s linear;
-  }
+.equipment h2 {
+  color: #f97316; /* orange heading */
+  margin-bottom: 0.5rem;
 }
 
-.card {
-  padding: 2em;
+.equipment ul {
+  list-style: none;
+  padding-left: 0;
+  color: #374151; /* dark gray */
 }
 
-.read-the-docs {
-  color: #888;
+.equipment li {
+  margin-bottom: 0.25rem;
+}
+
+/* Time slots grid */
+.slots {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 0.5rem;
+  margin-bottom: 1.5rem;
+}
+
+.slot-button {
+  padding: 0.5rem;
+  border-radius: 10px;
+  border: 1px solid #d1d5db;
+  cursor: pointer;
+  background-color: white;
+  transition: 0.2s;
+}
+
+.slot-button:hover {
+  background-color: #e0f2fe; /* light blue hover */
+}
+
+.slot-button.selected {
+  background-color: #1d4ed8; /* blue */
+  color: white;
+}
+
+.slot-button.disabled {
+  background-color: #e5e7eb; /* gray */
+  color: #9ca3af;
+  cursor: not-allowed;
+}
+
+/* Form inputs */
+input {
+  width: 100%;
+  padding: 0.5rem;
+  margin-bottom: 0.75rem;
+  border-radius: 10px;
+  border: 1px solid #d1d5db;
+}
+
+/* Book button */
+.book-button {
+  width: 100%;
+  padding: 0.5rem;
+  border-radius: 10px;
+  border: none;
+  background-color: #f97316; /* orange */
+  color: white;
+  font-weight: bold;
+  cursor: pointer;
+  transition: 0.2s;
+}
+
+.book-button:hover {
+  background-color: #ea580c; /* darker orange */
+}
+
+/* Success message */
+.success-message {
+  margin-top: 1rem;
+  background-color: #dcfce7; /* green */
+  color: #16a34a;
+  padding: 0.5rem;
+  border-radius: 8px;
+  text-align: center;
+  font-weight: bold;
 }
