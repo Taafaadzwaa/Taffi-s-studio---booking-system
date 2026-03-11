@@ -1,45 +1,22 @@
-const express = require("express")
-const cors = require("cors")
+const express = require("express");
+const cors = require("cors");
 
-const app = express()
-const PORT = 5000
+const reservationRoutes = require("./reservation");
 
-app.use(cors())
-app.use(express.json())
+const app = express();
+const PORT = 5000;
 
-let reservations = []
+app.use(cors());
+app.use(express.json());
 
-// Get all reservations
-app.get("/reservations", (req, res) => {
-    res.json(reservations)
-})
+// Use reservation routes
+app.use("/reservations", reservationRoutes);
 
-// Create reservation
-app.post("/reservations", (req, res) => {
-    const { name, email, time } = req.body
-
-    if (!name || !email || !time) {
-        return res.status(400).json({ message: "All fields required" })
-    }
-
-    const exists = reservations.find(r => r.time === time)
-
-    if (exists) {
-        return res.status(409).json({ message: "Time slot already booked" })
-    }
-
-    const reservation = {
-        id: Date.now(),
-        name,
-        email,
-        time
-    }
-
-    reservations.push(reservation)
-
-    res.status(201).json(reservation)
-})
+app.get("/", (req, res) => {
+  res.send("Studio Reservation API is running");
+});
 
 app.listen(PORT, () => {
-    console.log(`Server running on port ${PORT}`)
-})
+  console.log(`Server running on port ${PORT}`);
+});
+

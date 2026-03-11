@@ -23,15 +23,8 @@ function App() {
   }, []);
 
   const handleReservation = async () => {
-    if (!selectedSlot) {
-      alert("Please select a time slot");
-      return;
-    }
-
-    if (!name || !email) {
-      alert("Please enter your name and email");
-      return;
-    }
+    if (!selectedSlot) return alert("Please select a time slot");
+    if (!name || !email) return alert("Please enter your name and email");
 
     const reservation = { name, email, time: selectedSlot };
 
@@ -54,12 +47,17 @@ function App() {
     }
   };
 
+  // Check if all slots are booked
+  const allBooked = bookedSlots.length === slots.length;
+
   return (
     <div className="container">
       <h1>Taffi's Studio</h1>
 
-      <p>Photography Studio Booking . <br>
-      </br>Reserve your studio session .</p>
+      <p>
+        Photography Studio Booking. <br />
+        Reserve your studio session.
+      </p>
 
       {/* Equipment */}
       <div className="equipment">
@@ -73,46 +71,67 @@ function App() {
       </div>
 
       {/* Time Slots */}
-      <div className="slots">
-        {slots.map((slot) => {
-          const isBooked = bookedSlots.includes(slot);
-          return (
-            <button
-              key={slot}
-              onClick={() => setSelectedSlot(slot)}
-              disabled={isBooked}
-              className={`slot-button ${
-                selectedSlot === slot ? "selected" : ""
-              } ${isBooked ? "disabled" : ""}`}
-            >
-              {slot}
-            </button>
-          );
-        })}
-      </div>
+      {!allBooked ? (
+        <div className="slots">
+          {slots.map((slot) => {
+            const isBooked = bookedSlots.includes(slot);
+            return (
+              <button
+                key={slot}
+                onClick={() => setSelectedSlot(slot)}
+                disabled={isBooked}
+                className={`slot-button ${
+                  selectedSlot === slot ? "selected" : ""
+                } ${isBooked ? "disabled" : ""}`}
+              >
+                {slot}
+              </button>
+            );
+          })}
+        </div>
+      ) : (
+        <div className="success-message">
+           All slots are booked for today. Please book tomorrow!
+        </div>
+      )}
 
       {/* Form */}
-      <input
-        type="text"
-        placeholder="Full Name"
-        value={name}
-        onChange={(e) => setName(e.target.value)}
-      />
-      <input
-        type="email"
-        placeholder="Email Address"
-        value={email}
-        onChange={(e) => setEmail(e.target.value)}
-      />
-      <button className="book-button" onClick={handleReservation}>
-        Book Studio Session
-      </button>
+      {!allBooked && (
+        <>
+          <input
+            type="text"
+            placeholder="Full Name"
+            value={name}
+            onChange={(e) => setName(e.target.value)}
+          />
+          <input
+            type="email"
+            placeholder="Email Address"
+            value={email}
+            onChange={(e) => setEmail(e.target.value)}
+          />
+          <button className="book-button" onClick={handleReservation}>
+            Book Studio Session
+          </button>
+        </>
+      )}
+
+      {/*<button
+  onClick={async () => {
+    await fetch("http://localhost:5000/reservations/reset", { method: "DELETE" });
+    fetchReservations();
+    alert("All slots cleared! You can start booking again.");
+  }}
+>
+  Reset Slots (Test)
+</button>*/}
+
 
       {/* Success message */}
       {success && (
         <div className="success-message">
-          Booking confirmed! . Thanks for Booking with Taffi's Studio !! <br>
-          </br>Your studio session has been reserved.
+           Thanks for booking with Taffi's Studio! <br />
+          Your studio session has been reserved.
         </div>
       )}
     </div>
@@ -120,3 +139,5 @@ function App() {
 }
 
 export default App;
+
+
