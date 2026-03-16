@@ -2,13 +2,15 @@
 body {
   background-color: #f0f9ff; /* light blue background */
   font-family: Arial, sans-serif;
+  margin: 0;
+  padding: 0;
 }
 
 /* Main container */
 .container {
   max-width: 420px;
   margin: 2rem auto;
-  background-color: white;
+  background-color: rgb(196, 214, 240);
   padding: 2rem;
   border-radius: 20px;
   box-shadow: 0 10px 20px rgba(0,0,0,0.1);
@@ -19,17 +21,19 @@ h1 {
   color: #1d4ed8; /* blue */
   text-align: center;
   margin-bottom: 0.5rem;
+  font-size: 2rem;
 }
 
 p {
-  color: #6b7280; /* gray text */
+  color: #020f2b; /* gray text */
   text-align: center;
   margin-bottom: 1.5rem;
+  font-size: 1rem;
 }
 
 /* Equipment box */
 .equipment {
-  background-color: #fff7ed; /* light orange */
+  background-color: #fad0aa; /* light orange */
   padding: 1rem;
   border-radius: 12px;
   margin-bottom: 1.5rem;
@@ -38,12 +42,13 @@ p {
 .equipment h2 {
   color: #f97316; /* orange heading */
   margin-bottom: 0.5rem;
+  font-size: 1.25rem;
 }
 
 .equipment ul {
   list-style: none;
   padding-left: 0;
-  color: #374151; /* dark gray */
+  color: #613606; /* dark gray */
 }
 
 .equipment li {
@@ -61,9 +66,9 @@ p {
 .slot-button {
   padding: 0.5rem;
   border-radius: 10px;
-  border: 1px solid #d1d5db;
+  border: 1px solid #1d4d96;
   cursor: pointer;
-  background-color: white;
+  background-color: rgb(179, 177, 212);
   transition: 0.2s;
 }
 
@@ -112,9 +117,89 @@ input {
 .success-message {
   margin-top: 1rem;
   background-color: #dcfce7; /* green */
-  color: #16a34a;
+  color: #068133;
   padding: 0.5rem;
   border-radius: 8px;
   text-align: center;
   font-weight: bold;
 }
+
+
+
+/* making the app responsve on phons */
+@media (max-width: 639px) {
+  .container {
+    margin: 1rem;
+    padding: 1rem;
+  }
+
+  h1 {
+    font-size: 1.5rem;
+  }
+
+  p {
+    font-size: 0.9rem;
+  }
+
+  .equipment h2 {
+    font-size: 1.1rem;
+  }
+
+  .slots {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 0.25rem;
+  }
+
+  .slot-button {
+    padding: 0.4rem;
+    font-size: 0.85rem;
+  }
+
+  input, .book-button {
+    padding: 0.4rem;
+    font-size: 0.9rem;
+  }
+}
+
+
+@media (min-width: 640px) and (max-width: 1023px) {
+  .container {
+    max-width: 90%;
+    padding: 1.5rem;
+  }
+
+  h1 {
+    font-size: 1.8rem;
+  }
+
+  .equipment h2 {
+    font-size: 1.2rem;
+  }
+
+  .slots {
+    grid-template-columns: repeat(3, 1fr);
+    gap: 0.5rem;
+  }
+}
+
+/*making the app responsive */
+@media (min-width: 1024px) {
+  .container {
+    max-width: 500px;
+    padding: 2rem;
+  }
+
+  h1 {
+    font-size: 2rem;
+  }
+
+  .equipment h2 {
+    font-size: 1.25rem;
+  }
+
+  .slots {
+    grid-template-columns: repeat(3, 1fr);
+    gap: 0.5rem;
+  }
+}
+
